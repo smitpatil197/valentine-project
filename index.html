@@ -27,13 +27,18 @@ document.getElementById("mainText").innerHTML =
 
 function moveButton() {
     const button = document.getElementById("noBtn");
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
 
-    button.style.position = "absolute";
+    const maxX = window.innerWidth - button.offsetWidth - 20;
+    const maxY = window.innerHeight - button.offsetHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    button.style.position = "fixed";
     button.style.left = x + "px";
     button.style.top = y + "px";
 }
+
 
 function yesClicked() {
     window.location.href = `success.html?name=${name}`;
