@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Will You Be My Valentine? 💖</h1>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="yesClicked()">YES ❤️</button>
+            <button id="noBtn" onmouseover="moveButton()">NO 😜</button>
+        </div>
+    </div>
+
+<script>
+function moveButton() {
+    var button = document.getElementById("noBtn");
+
+    var x = Math.floor(Math.random() * 300);
+    var y = Math.floor(Math.random() * 300);
+
+    button.style.position = "absolute";
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+function yesClicked() {
+    window.location.href = "success.html";
+}
+</script>
+
+</body>
+</html>
