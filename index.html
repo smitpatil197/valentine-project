@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Be My Valentine?</title>
+    <title>Be My Valentine 💖</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Will You Be My Valentine? 💖</h1>
+<div class="hearts"></div>
 
-        <div class="buttons">
-            <button id="yesBtn" onclick="yesClicked()">YES ❤️</button>
-            <button id="noBtn" onmouseover="moveButton()">NO 😜</button>
-        </div>
+<div class="container">
+    <h1 id="mainText"></h1>
+    <div class="buttons">
+        <button id="yesBtn" onclick="yesClicked()">YES 💘</button>
+        <button id="noBtn" onmouseover="moveButton()">NO 🙈</button>
     </div>
+</div>
 
 <script>
-function moveButton() {
-    var button = document.getElementById("noBtn");
 
-    var x = Math.floor(Math.random() * 300);
-    var y = Math.floor(Math.random() * 300);
+// Get name from URL
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name") || "Beautiful";
+
+document.getElementById("mainText").innerHTML =
+    `Hey ${name} 💕<br>Will You Be My Valentine?`;
+
+function moveButton() {
+    const button = document.getElementById("noBtn");
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
 
     button.style.position = "absolute";
     button.style.left = x + "px";
@@ -28,8 +36,9 @@ function moveButton() {
 }
 
 function yesClicked() {
-    window.location.href = "success.html";
+    window.location.href = `success.html?name=${name}`;
 }
+
 </script>
 
 </body>
