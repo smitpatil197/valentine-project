@@ -3,10 +3,12 @@ body {
     padding: 0;
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #ff4e50, #fc913a);
+    background: url("background.jpg") no-repeat center center fixed;
+    background-size: cover;
     overflow: hidden;
     color: white;
 }
+
 
 .container {
     margin-top: 150px;
