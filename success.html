@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Yay!</title>
+    <title>Yayyyy 💖</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Yayyyy!!! 💕</h1>
-        <h2>Happy Valentine’s Day ❤️</h2>
-        <p>You just made my day special! 💖</p>
-    </div>
+<div class="container">
+    <h1 id="successText"></h1>
+    <p>You just made my heart the happiest 💕</p>
+    <button onclick="playConfetti()">Celebrate 🎉</button>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name") || "My Love";
+
+document.getElementById("successText").innerHTML =
+    `YAY ${name}!!! 💖`;
+
+function playConfetti() {
+    confetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+}
+</script>
 
 </body>
 </html>
