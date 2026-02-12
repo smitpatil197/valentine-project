@@ -10,36 +10,44 @@
 
 <div class="container">
     <h1 id="mainText"></h1>
-    <div class="buttons">
+
+    <div class="buttons" id="buttonArea">
         <button id="yesBtn" onclick="yesClicked()">YES 💘</button>
-        <button id="noBtn" onmouseover="moveButton()">NO 🙈</button>
+        <button id="noBtn">NO 🙈</button>
     </div>
 </div>
 
 <script>
 
-// Get name from URL
+// ===== GET NAME FROM URL =====
 const params = new URLSearchParams(window.location.search);
 const name = params.get("name") || "Cutie";
 
 document.getElementById("mainText").innerHTML =
     `Hey ${name} 💕<br>Will You Be My Valentine?`;
 
-function moveButton() {
-    const button = document.getElementById("noBtn");
 
-    const maxX = window.innerWidth - button.offsetWidth - 20;
-    const maxY = window.innerHeight - button.offsetHeight - 20;
+// ===== MOVE NO BUTTON SAFELY INSIDE CONTAINER =====
+const noBtn = document.getElementById("noBtn");
+const buttonArea = document.getElementById("buttonArea");
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+noBtn.addEventListener("mouseover", () => {
 
-    button.style.position = "fixed";
-    button.style.left = x + "px";
-    button.style.top = y + "px";
-}
+    const areaRect = buttonArea.getBoundingClientRect();
+
+    const maxX = areaRect.width - noBtn.offsetWidth;
+    const maxY = areaRect.height - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.position = "absolute";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
 
 
+// ===== YES CLICK =====
 function yesClicked() {
     window.location.href = `success.html?name=${name}`;
 }
